@@ -36,7 +36,7 @@ class FSA:
     def add_edge_epsilon(self, src, dst):
         self.add_edge(src, dst, 0)
 
-    def combine(self, fsa):
+    def combine(self, fsa) -> int:
         offset = len(self.states)
         tmpfsa = fsa.duplicate()
         for state in tmpfsa.states:
@@ -62,3 +62,8 @@ class FSA:
                 f.write('\t' + str(state_index) + ' -> ' + str(edge.dst)
                         + ' [label="' + disp + '"];\n')
         f.write('}\n')
+
+    def from_regex(regex: str):
+        from regex import parse
+        from nfa_to_dfa import convert
+        return convert(parse(regex))
