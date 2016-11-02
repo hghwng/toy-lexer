@@ -107,8 +107,9 @@ def main():
     import sys
     import regex
     nfa = regex.parse(sys.argv[1])
+    nfa.dump(open('nfa.dot', 'w'))
     dfa = convert(nfa)
-    dfa.dump(open('dump.dot', 'w'))
+    dfa.dump(open('dfa.dot', 'w'))
 
 if __name__ == '__main__':
     main()
