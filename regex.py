@@ -100,10 +100,7 @@ class _Parser:
         if self.peek() in "*?":
             fsa.add_edge_epsilon(0, fsa.finals[0])
         if self.peek() in "*+":
-            dup_begin = fsa.combine(subfsa)
-            dup_end = fsa.finals.pop()
-            fsa.add_edge_epsilon(fsa.finals[0], dup_begin)
-            fsa.add_edge_epsilon(dup_end, fsa.finals[0])
+            fsa.add_edge_epsilon(fsa.finals[0], 0)
         if self.peek() in "*+?":
             self.pos += 1
         return fsa
@@ -153,7 +150,7 @@ def parse(regex: str) -> FSA:
 def main():
     import sys
     fsa = parse(sys.argv[1])
-    fsa.dump(open('dump.dot', 'w'))
+    fsa.dump(open('regex.dot', 'w'))
 
 if __name__ == '__main__':
     main()
