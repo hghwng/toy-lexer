@@ -52,7 +52,7 @@ class _Parser:
 
         while self.pos < self.maxpos:
             if self.peek() == ']':
-                self.pos += 2
+                self.pos += 1
                 return fsa
             char = self.parse_char()
             if self.peek() == '-':
