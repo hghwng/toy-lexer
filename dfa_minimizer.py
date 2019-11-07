@@ -123,7 +123,7 @@ def main():
     nfa.dump(open('nfa.dot', 'w'))
     dfa = nfa_to_dfa.convert(nfa)
     dfa.dump(open('dfa.dot', 'w'))
-    mindfa, _ = minimize(dfa)
+    mindfa = minimize(dfa)
     mindfa.dump(open('mindfa.dot', 'w'))
 
 if __name__ == '__main__':
